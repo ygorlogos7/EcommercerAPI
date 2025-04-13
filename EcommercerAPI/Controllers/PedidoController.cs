@@ -1,5 +1,6 @@
 ﻿using EcommercerAPI.Context;
 using EcommercerAPI.Interfaces;
+using EcommercerAPI.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,7 +16,9 @@ namespace EcommercerAPI.Controllers
         // Construtor
         public PedidoController(PedidoController context )
         {
- 
+            _context = context;
+            _pedidoRepository = new PedidoRepository(_context);
+        
         }
 
         // GET: api/<PedidoController>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using EcommercerAPI.Controllers;
 using EcommercerAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -127,4 +128,9 @@ public partial class EcommerceContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+    public static implicit operator EcommerceContext(PedidoController v)
+    {
+        throw new NotImplementedException();
+    }
 }
