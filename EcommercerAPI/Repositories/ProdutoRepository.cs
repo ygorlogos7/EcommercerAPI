@@ -31,6 +31,8 @@ namespace EcommercerAPI.Repositories
         public void Cadastrar(Produto produto)
         {
             _context.Produtos.Add(produto); // Adiciona o produto no contexto
+                              
+            _context.SaveChanges();  //  Salvo a Alteracao
 
         }
 

@@ -14,10 +14,10 @@ namespace EcommercerAPI.Controllers
         private readonly EcommerceContext _context;
 
         // Construtor
-        public PagamentoController(EcommerceContext context)
+        public PagamentoController(IPagamentoRepository pagamentoRepository)
         {
-            _context = context;
-            _pagamentoRepository = new PagamentoRepository(_context);
+
+            _pagamentoRepository = pagamentoRepository;
 
         }
 

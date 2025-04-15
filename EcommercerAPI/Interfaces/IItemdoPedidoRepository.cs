@@ -2,7 +2,7 @@
 
 namespace EcommercerAPI.Interfaces
 {
-    public interface IItemdoPedidoRepository
+    public interface ItemdoPedidoRepository
     {
         // R - Read(Leitura) -RETORNO
         List<ItemPedido> ListarTodos();

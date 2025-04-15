@@ -1,7 +1,7 @@
 ﻿
 namespace EcommercerAPI.Repositories
 {
-    public class ItemPedido : Interfaces.IItemdoPedidoRepository
+    public class ItemPedido : Interfaces.ItemdoPedidoRepository
     {
         public void Atualizar(int id, Models.ItemPedido itemdoPedido)
         {

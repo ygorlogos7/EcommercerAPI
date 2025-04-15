@@ -15,10 +15,10 @@ namespace EcommercerAPI.Controllers
         private readonly EcommerceContext _context;
 
         // Construtor
-        public ClienteController(EcommerceContext context)
+        public ClienteController(IClienteRepository clienteRepository)
         {
-            _context = context;
-            _clienteController = new ClienteController(_context);
+            
+            _clienteController = (ClienteController?)clienteRepository;
 
         }
 

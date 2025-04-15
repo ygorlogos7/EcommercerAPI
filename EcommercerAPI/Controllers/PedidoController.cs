@@ -14,10 +14,10 @@ namespace EcommercerAPI.Controllers
         private readonly EcommerceContext _context;
 
         // Construtor
-        public PedidoController(PedidoController context )
+        public PedidoController(IPedidoRepository pedidoRepository )
         {
-            _context = context;
-            _pedidoRepository = new PedidoRepository(_context);
+            
+            _pedidoRepository = pedidoRepository;
         
         }
 
