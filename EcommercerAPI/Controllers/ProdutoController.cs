@@ -17,7 +17,7 @@ namespace EcommercerAPI.Controllers
         public ProdutoController(IProdutoRepository produtoRepository)
         {
             _produtoRepository = produtoRepository;
-            
+
         }
 
         // GET: api/<ProdutoController>
@@ -37,6 +37,61 @@ namespace EcommercerAPI.Controllers
             // 201 - Created
             return Created();
         }
-    }
+
+        // Buscar por ID
+        [HttpGet("{id}")]
+        public IActionResult BuscarProdutoPorID(int id)
+        {
+            // 1 - Busco o produto no banco de dados
+            Produto produtoEncontrado = _produtoRepository.BuscarPorID(id);
+            // 2 - Verifico se o produto foi encontrado
+            if (produtoEncontrado == null)
+            {
+                // 404 - Not Found
+                return NotFound("Produto não encontrado");
+            }
+            // 3 - Retorno o resultado
+            return Ok(produtoEncontrado);
+        }
+
+        // Atualizar Produto
+        [HttpPut("{id}")]
+        public IActionResult AtualizarProduto(int id, Produto produto)
+        {
+            try
+            {
+                // 1 - Atualizo o produto no banco de dados
+                _produtoRepository.Atualizar(id, produto);
+                // 2 - Retorno o resultado
+                // 204 - No Content
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                // 404 - Not Found
+                return NotFound("Produto não encontrado");
+            }
+        }
+
+        // Deletar Produto
+        [HttpDelete("{id}")]
+        public IActionResult DeletarProduto(int id)
+        {
+            try
+            {
+             _produtoRepository.Deletar(id);
+
+                // 204 - No Content
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                // 404 - Not Found
+                return NotFound("Produto não encontrado");
+
+            }
+        }
+
+    } 
 }
 

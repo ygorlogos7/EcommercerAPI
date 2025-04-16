@@ -20,7 +20,7 @@ builder.Services.AddTransient<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddTransient<IPedidoRepository, PedidoRepository>();
 builder.Services.AddTransient<IClienteRepository, ClienteRepository>();
 builder.Services.AddTransient<IPagamentoRepository, PagamentoRepository>();
-builder.Services.AddTransient<IItemdoPedidoRepository, ItemPedidoRepository>();
+
 
 var app = builder.Build();
 
