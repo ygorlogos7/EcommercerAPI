@@ -2,7 +2,7 @@
 
 namespace API_ECommerce.DTO
 {
-    public class CadastrarPagamentosDTOcs
+    public class CadastrarPagamentosDTO
     {
         public string FormaPagamento { get; set; } = null!;
 

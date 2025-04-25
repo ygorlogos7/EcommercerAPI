@@ -1,4 +1,5 @@
 ﻿using API_ECommerce.Context;
+using API_ECommerce.DTO;
 using API_ECommerce.Interfaces;
 using API_ECommerce.Models;
 
@@ -22,12 +23,22 @@ namespace API_ECommerce.Repositories
             throw new NotImplementedException();
         }
 
-        public void Cadastrar(ItemPedido itemPedido)
+        public void Cadastrar(CadastrarItemPedidoDTO itemPedido)
         {
+            // Verifica se o produto existe no banco de dados
+            var item = new ItemPedido
+            {
+                IdProduto = itemPedido.IdProduto,
+                IdPedido = itemPedido.IdPedido,
+                Quantidade = itemPedido.Quantidade,
+            };
+            // Adiciona o itemPedido na tabela ItemPedido
             _context.Add(itemPedido);
-
+            // Salva as alterações no banco de dados
             _context.SaveChanges();
+
         }
+
 
         public void Deletar(int id)
         {

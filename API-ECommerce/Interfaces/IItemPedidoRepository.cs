@@ -1,4 +1,5 @@
-﻿using API_ECommerce.Models;
+﻿using API_ECommerce.DTO;
+using API_ECommerce.Models;
 
 namespace API_ECommerce.Interfaces
 {
@@ -6,7 +7,7 @@ namespace API_ECommerce.Interfaces
     {
         List<ItemPedido> ListarTodos();
         ItemPedido BuscarPorId(int id);
-        void Cadastrar(ItemPedido itemPedido);
+        void Cadastrar(CadastrarItemPedidoDTO itemPedido);
         void Atualizar(int id, ItemPedido itemPedido);
         void Deletar(int id);
     }

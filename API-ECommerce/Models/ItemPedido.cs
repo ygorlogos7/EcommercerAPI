@@ -16,4 +16,9 @@ public partial class ItemPedido
     public virtual Pedido Pedido { get; set; } = null!;
 
     public virtual Produto Produto { get; set; } = null!;
+
+    public virtual Pedido? IdPedidoNavigation { get; set; }
+
+    public virtual Produto? IdProdutoNavigation { get; set; }
+
 }

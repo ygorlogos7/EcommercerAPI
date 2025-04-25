@@ -1,4 +1,5 @@
-﻿using API_ECommerce.Interfaces;
+﻿using API_ECommerce.DTO;
+using API_ECommerce.Interfaces;
 using API_ECommerce.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +24,7 @@ namespace API_ECommerce.Controllers
         }
 
         [HttpPost]
-        public IActionResult CadastrarItemPedido(ItemPedido item)
+        public IActionResult CadastrarItemPedido(CadastrarItemPedidoDTO item)
         {
             _itemPedidoRepository.Cadastrar(item);
 

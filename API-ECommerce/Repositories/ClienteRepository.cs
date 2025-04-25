@@ -2,6 +2,7 @@
 using API_ECommerce.DTO;
 using API_ECommerce.Interfaces;
 using API_ECommerce.Models;
+using API_ECommerce.ViewModels;
 
 namespace API_ECommerce.Repositories
 {
@@ -68,11 +69,8 @@ namespace API_ECommerce.Repositories
 
             _context.Clientes.Add(clienteCadastro);
 
-            _context.SaveChanges();
+            
         }
-
-    
-
         public void Deletar(int id)
         {
             // Encontrar quem eu quero deletar
@@ -104,10 +102,19 @@ namespace API_ECommerce.Repositories
             // .Where(c => c.NomeCompleto.Contains(nome)) - Para pesquisar por parte do nome
             return ListaClientes;
         }
-
-        public List<Cliente> ListarTodos()
+        public List<ListarClientesViewModel> ListarTodos()
         {
             return _context.Clientes
+                // Permite que eu traga apenas os campos que eu quero
+                .Select(c => new ListarClientesViewModel
+                {
+                    IdCliente = c.IdCliente,
+                    NomeCompleto = c.NomeCompleto,
+                    Email = c.Email,
+                    Telefone = c.Telefone,
+                    Endereco = c.Endereco,
+                    DataCadastro = c.DataCadastro
+                })
                 .OrderBy(c => c.NomeCompleto)
                 .ToList();
         }

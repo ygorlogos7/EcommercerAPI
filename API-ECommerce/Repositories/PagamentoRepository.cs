@@ -1,4 +1,5 @@
 ﻿using API_ECommerce.Context;
+using API_ECommerce.DTO;
 using API_ECommerce.Interfaces;
 using API_ECommerce.Models;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +29,11 @@ namespace API_ECommerce.Repositories
         public void Cadastrar(Pagamento pagamento)
         {
             _context.Pagamentos.Add(pagamento);
+        }
+
+        public void Cadastrar(CadastrarPagamentosDTO pagamento)
+        {
+            throw new NotImplementedException();
         }
 
         public void Deletar(int id)

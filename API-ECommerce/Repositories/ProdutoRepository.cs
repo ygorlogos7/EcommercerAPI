@@ -1,5 +1,6 @@
 ﻿using API_ECommerce.Context;
 using API_ECommerce.DTO;
+using API_ECommerce.Exceptions;
 using API_ECommerce.Interfaces;
 using API_ECommerce.Models;
 
@@ -82,7 +83,7 @@ namespace API_ECommerce.Repositories
             // Caso nao encontre o produto, lanco um erro
             if(produtoEncontrado == null)
             {
-                throw new Exception();
+                throw new ProdutoNaoEncontradoException(id);
             }
 
             // Caso eu encontre o produto, removo ele
@@ -91,6 +92,7 @@ namespace API_ECommerce.Repositories
             // Salvo as alteracoes
             _context.SaveChanges();
         }
+
 
         public List<Produto> ListarProdutoMaisBarato(string nome)
         {
