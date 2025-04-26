@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace API_ECommerce.Models;
 
 public partial class ItemPedido
 {
+
     public int IdItemPedido { get; set; }
 
     public int IdPedido { get; set; }
@@ -13,9 +16,12 @@ public partial class ItemPedido
 
     public int Quantidade { get; set; }
 
-    public virtual Pedido? IdPedidoNavigation { get; set; }
+    [JsonIgnore]
+    public Pedido Pedido { get; set; } = null!;
 
-    public virtual Produto? IdProdutoNavigation { get; set; }
-    public object Pedido { get; internal set; }
-    public object Produto { get; internal set; }
+    public Produto Produto { get; set; } = null!;
+
+    public virtual ICollection<ItemPedido> Pedidos { get; set; } = new List<ItemPedido>();
 }
+
+

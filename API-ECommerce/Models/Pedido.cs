@@ -19,6 +19,12 @@ public partial class Pedido
     public virtual Cliente IdClienteNavigation { get; set; } = null!;
 
     public virtual ICollection<ItemPedido> ItemPedidos { get; set; } = new List<ItemPedido>();
+
     [JsonIgnore]
-    public virtual ICollection<Pagamento> Pagamentos { get; set; } = new List<Pagamento>();
+    public virtual ICollection<Pagamento> Pagamentos { get; set; }
+
+
+
+
+
 }

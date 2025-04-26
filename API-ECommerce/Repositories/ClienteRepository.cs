@@ -69,6 +69,8 @@ namespace API_ECommerce.Repositories
 
             _context.Clientes.Add(clienteCadastro);
 
+            _context.SaveChanges();
+
             
         }
         public void Deletar(int id)

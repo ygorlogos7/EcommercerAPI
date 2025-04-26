@@ -30,15 +30,14 @@ namespace API_ECommerce.Repositories
             {
                 IdProduto = itemPedido.IdProduto,
                 IdPedido = itemPedido.IdPedido,
-                Quantidade = itemPedido.Quantidade,
+                Quantidade = itemPedido.Quantidade
             };
             // Adiciona o itemPedido na tabela ItemPedido
-            _context.Add(itemPedido);
+            _context.ItemPedidos.Add(item);
             // Salva as alterações no banco de dados
             _context.SaveChanges();
 
         }
-
 
         public void Deletar(int id)
         {

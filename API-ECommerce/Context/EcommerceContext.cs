@@ -7,9 +7,6 @@ namespace API_ECommerce.Context;
 
 public partial class EcommerceContext : DbContext
 {
-    public EcommerceContext()
-    {
-    }
 
     public EcommerceContext(DbContextOptions<EcommerceContext> options)
         : base(options)
@@ -63,7 +60,7 @@ public partial class EcommerceContext : DbContext
 
             entity.ToTable("ItemPedido");
 
-            entity.HasOne(d => d.Pedido).WithMany(p => p.ItemPedidos)
+            entity.HasOne(d => d.Pedido).WithMany( p => p.ItemPedidos)
                 .HasForeignKey(d => d.IdPedido)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__ItemPedid__IdPed__02FC7413");

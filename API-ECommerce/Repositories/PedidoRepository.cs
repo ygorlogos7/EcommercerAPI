@@ -70,7 +70,7 @@ namespace API_ECommerce.Repositories
         {
             return _context.Pedidos
                    .Include(p => p.ItemPedidos)
-                   .ThenInclude(i => i.IdProdutoNavigation) // Carrega os produtos relacionados
+                   .ThenInclude(i => i.Produto) // Carrega os produtos relacionados
                    .ToList();
         }
        

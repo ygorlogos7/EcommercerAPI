@@ -16,5 +16,7 @@ public partial class Pagamento
     public DateTime Data { get; set; }
 
     public virtual Pedido? Pedido { get; set; }
-   
+
+    public virtual ICollection<Pedido> Pedidos { get; set; } = new List<Pedido>();
+
 }
