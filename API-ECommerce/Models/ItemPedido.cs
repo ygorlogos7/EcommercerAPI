@@ -13,12 +13,9 @@ public partial class ItemPedido
 
     public int Quantidade { get; set; }
 
-    public virtual Pedido Pedido { get; set; } = null!;
-
-    public virtual Produto Produto { get; set; } = null!;
-
     public virtual Pedido? IdPedidoNavigation { get; set; }
 
     public virtual Produto? IdProdutoNavigation { get; set; }
-
+    public object Pedido { get; internal set; }
+    public object Produto { get; internal set; }
 }
