@@ -74,6 +74,8 @@ namespace API_ECommerce.Repositories
             _context.SaveChanges();
         }
 
+        
+
         public void Deletar(int id)
         {
             // 1 - Encontrar o que eu quero Excluir

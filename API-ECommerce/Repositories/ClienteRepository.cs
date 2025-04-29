@@ -2,6 +2,7 @@
 using API_ECommerce.DTO;
 using API_ECommerce.Interfaces;
 using API_ECommerce.Models;
+using API_ECommerce.Services;
 using API_ECommerce.ViewModels;
 
 namespace API_ECommerce.Repositories
@@ -68,15 +69,20 @@ namespace API_ECommerce.Repositories
                 Endereco = clienteDto.Endereco,
                 Senha = clienteDto.Senha,
                 DataCadastro = clienteDto.DataCadastro,
-            };  
+            };
 
 
             clienteCadastro.Senha = passwordService.HashPassword(clienteCadastro);
 
+            _context.Clientes.Add(clienteCadastro);
             _context.SaveChanges();
 
-            
+
         }
+
+
+
+        
         public void Deletar(int id)
         {
             // Encontrar quem eu quero deletar

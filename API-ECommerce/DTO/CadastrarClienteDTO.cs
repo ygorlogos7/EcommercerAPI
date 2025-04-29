@@ -1,7 +1,9 @@
-﻿namespace API_ECommerce.DTO
+﻿
+namespace API_ECommerce.DTO
 {
     public class CadastrarClienteDTO
     {
+       
         public string NomeCompleto { get; set; } = null!;
 
         public string Email { get; set; } = null!;
@@ -11,5 +13,6 @@
         public string? Endereco { get; set; }
 
         public string Senha { get; set; } = null!;
+        public DateOnly? DataCadastro { get; set; }
     }
 }
