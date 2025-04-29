@@ -57,6 +57,9 @@ namespace API_ECommerce.Repositories
 
         public void Cadastrar(CadastrarClienteDTO clienteDto)
         {
+
+            var passwordService = new PasswordService();
+
             Cliente clienteCadastro = new Cliente
             {
                 NomeCompleto = clienteDto.NomeCompleto,
@@ -64,10 +67,11 @@ namespace API_ECommerce.Repositories
                 Telefone = clienteDto.Telefone,
                 Endereco = clienteDto.Endereco,
                 Senha = clienteDto.Senha,
+                DataCadastro = clienteDto.DataCadastro,
             };  
 
 
-            _context.Clientes.Add(clienteCadastro);
+            clienteCadastro.Senha = passwordService.HashPassword(clienteCadastro);
 
             _context.SaveChanges();
 
@@ -117,7 +121,7 @@ namespace API_ECommerce.Repositories
                     Endereco = c.Endereco,
                     DataCadastro = c.DataCadastro
                 })
-                .OrderBy(c => c.NomeCompleto)
+                //.OrderBy(c => c.NomeCompleto)
                 .ToList();
         }
     }
