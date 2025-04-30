@@ -12,8 +12,6 @@ namespace API_ECommerce.Services
 
         private readonly PasswordHasher<Cliente> _hasher = new();
 
-    
-
         // 1 - Gerar o Hash
         public string HashPassword(Cliente cliente)
         {

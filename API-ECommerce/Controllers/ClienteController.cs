@@ -3,6 +3,7 @@ using API_ECommerce.DTO;
 using API_ECommerce.Interfaces;
 using API_ECommerce.Repositories;
 using API_ECommerce.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,6 +26,7 @@ namespace API_ECommerce.Controllers
         }
 
         [HttpGet]
+        
         public IActionResult ListarTodos()
         {
             return Ok(_clienteRepository.ListarTodos());
@@ -57,18 +59,22 @@ namespace API_ECommerce.Controllers
         }
 
 
-        // /api/cliente/vini@senai.com/12345
-        [HttpGet("{email}/{senha}")]
-        public IActionResult Login(string email, string senha)
+        
+        [HttpPost("login")]
+        public IActionResult Login(LoginDTO login)
         {
-            var cliente = _clienteRepository.BuscarPorEmailSenha(email, senha);
+            var cliente = _clienteRepository.BuscarPorEmailSenha( login.Email, login.Senha);
 
             if (cliente == null)
             {
-                return NotFound();
+                return Unauthorized("Email ou Senha invalidados!");
             }
 
-            return Ok(cliente);
+             var tokenService = new TokenService();
+
+            var token = tokenService.GenerateToken(cliente.Email);
+
+            return Ok(token);
         }
     }
 }

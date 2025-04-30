@@ -44,9 +44,22 @@ namespace API_ECommerce.Repositories
         public Cliente? BuscarPorEmailSenha(string email, string senha)
         {
             // Encontrar o Cliente que possui o email e senha fornecidos
+            // procuro por email
             var clienteEncontrado = _context.Clientes.FirstOrDefault(c => c.Email == email && c.Senha == senha);
 
-            return clienteEncontrado;
+            // Se não encontrar o cliente, returno nulo
+            if (clienteEncontrado == null)  
+                return null;
+
+            var passwordService = new PasswordService();
+
+            // Verifico se a senha informada gera o mesmo hash que a senha do cliente
+            
+            var result = passwordService.VerifyPassword(clienteEncontrado, senha);
+
+            if ( result == true) return clienteEncontrado; 
+
+            return null;
         }
 
         public Cliente BuscarPorId(int id)
@@ -71,18 +84,11 @@ namespace API_ECommerce.Repositories
                 DataCadastro = clienteDto.DataCadastro,
             };
 
-
             clienteCadastro.Senha = passwordService.HashPassword(clienteCadastro);
 
             _context.Clientes.Add(clienteCadastro);
             _context.SaveChanges();
-
-
         }
-
-
-
-        
         public void Deletar(int id)
         {
             // Encontrar quem eu quero deletar
