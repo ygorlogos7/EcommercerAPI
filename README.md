@@ -42,7 +42,7 @@ Interfaces:
     - Deletar
     - Editar
 # Extras
-Importar EntityFlamework
-Configurar Swagger
+ EntityFlamework
+ Swagger
 
 
